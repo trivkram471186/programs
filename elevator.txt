@@ -1,0 +1,68 @@
+Number of lifts = 2
+Multiple requests are handled
+The nearest lift is chosen to service each request
+
+Change 1
+In the current implementation, each request is stored in the list and it is 
+processed one after the other. 
+Requirement is to process each request in parallel without waiting for processing
+of the current request to be finished
+Scenario:
+lift 1 is in floor 30, moving towards floor 40 
+lift 2 is in floor 10
+Now request comes for floor 15
+Nearest lift = lift 2
+In the current implementation lift 2 starts moving towards floor 15 only 
+after lift 1 reaches floor 40. Requirement is lift 2 should start processing 
+the request and move towards floor 15 in parallel, without waiting for lift 1 
+to finish processing request for floor 40
+
+Change 2
+Handle intermediate requests
+Requirement to stop the lift to service intermediate requests that come when
+the lift is moving
+scenario:   lift is moving from floor 0 to floor 10, lift is currently at floor
+5, if request comes for floor 8 at this instant, the lift should stop at 
+floor 8, wait for some time and then again start moving towards floor 10
+            
+Change 3
+Handle inputs from inside the lift
+When the input for any floor comes from inside a particular lift, the input
+should be serviced by the same lift and there is no need for selection
+of the nearest lift.
+The input format should be comma separated values
+First value - indicating the floor number
+Second value - should be a string containing the name of the lift, inside which 
+the input is given 
+
+Change 4
+The application also needs to consider the direction of the lift and the 
+direction of the request
+Scenario: lift 1 is moving from floor 0 to floor 10 and is currently in floor 4
+A person makes a request from floor 8 to move downwards. In the current scenario
+lift 1 stops at floor 8 and moves upward to floor 10. The requirement is that
+lift 1 should continue to floor 10 without stopping at floor 8 since the request
+is in the reverse direction
+
+While computing the nearest lift consider only those lifts that are stationary.
+Among the lifts which are moving consider the lift which is nearer only if 
+it is moving towards the requested floor and the lift direction == request 
+direction
+
+input format <floor number>, inside/outside lift, direction
+
+1.
+20,outside,UPWARD
+after lift passes floor number 12 provide below input
+12,outside,UPWARD
+
+2.
+30,outside,UPWARD
+25,outside,DOWNWARD
+
+3.
+lift1 at floor 24 , lift2 at floor 26
+provide below input
+10,outside,DOWNWARD
+60,outside,UPWARD
+25,outside,UPWARD
