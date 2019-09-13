@@ -66,3 +66,11 @@ provide below input
 10,outside,DOWNWARD
 60,outside,UPWARD
 25,outside,UPWARD
+
+
+
+
+6,outside,UPWARD
+
+4,inside lift1,DOWNWARD
+5,outside,DOWNWARD
