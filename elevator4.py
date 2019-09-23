@@ -12,6 +12,8 @@ class direction(Enum):
         NONE = 0
         UPWARD = 1
         DOWNWARD = 2
+        
+d = direction
 
 direction_dictionary = {
         "NONE": direction.NONE,
